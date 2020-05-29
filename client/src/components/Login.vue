@@ -3,12 +3,11 @@
     <v-col class="col-12 col-md-6 col-lg-4">
       <v-card class="pb-5">
         <v-toolbar flat dense dark class="indigo">
-          <v-toolbar-title>Register</v-toolbar-title>
+          <v-toolbar-title>Login</v-toolbar-title>
         </v-toolbar>
         <form
           class="pt-5 pl-5 pr-5"
-          name="tab-tracker-form"
-          autocomplete="off">
+          name="tab-tracker-form">
           <v-text-field
             label="Email"
             v-model="email"
@@ -27,8 +26,8 @@
         <v-btn
           dark
           class="indigo"
-          @click="register">
-          Register
+          @click="login">
+          Login
         </v-btn>
       </v-card>
     </v-col>
@@ -47,10 +46,10 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
         // eslint-disable-next-line no-unused-vars
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
