@@ -30,4 +30,8 @@ export default {
 main {
   margin-top: 80px;
 }
+.danger-alert {
+  color: red;
+  margin: 10px auto;
+}
 </style>

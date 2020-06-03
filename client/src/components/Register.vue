@@ -1,12 +1,9 @@
 <template>
   <v-row align="center" justify="center">
     <v-col class="col-12 col-md-6 col-lg-4">
-      <v-card class="pb-5">
-        <v-toolbar flat dense dark class="indigo">
-          <v-toolbar-title>Register</v-toolbar-title>
-        </v-toolbar>
+      <panel title="Register">
         <form
-          class="pt-5 pl-5 pr-5"
+          class="pt-5"
           name="tab-tracker-form"
           autocomplete="off">
           <v-text-field
@@ -30,13 +27,14 @@
           @click="register">
           Register
         </v-btn>
-      </v-card>
+      </panel>
     </v-col>
   </v-row>
 </template>
 
 <script>
 import AuthenticationService from '../services/AuthenticationService'
+import Panel from '@/components/Panel'
 export default {
   name: 'Register',
   data () {
@@ -60,7 +58,8 @@ export default {
         this.error = error.response.data.error
       }
     }
-  }
+  },
+  components: {Panel}
 }
 </script>
 
