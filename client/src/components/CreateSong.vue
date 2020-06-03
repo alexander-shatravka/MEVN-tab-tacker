@@ -15,6 +15,12 @@
         >
         </v-text-field>
         <v-text-field
+          label="Genre"
+          :rules="[required]"
+          v-model="song.genre"
+        >
+        </v-text-field>
+        <v-text-field
           label="Album"
           :rules="[required]"
           v-model="song.album"
@@ -96,6 +102,9 @@ export default {
       }
       try {
         await SongsService.post(this.song)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (err) {
         console.log(err)
       }

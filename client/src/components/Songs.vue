@@ -13,13 +13,25 @@
           <v-icon>add</v-icon>
         </v-btn>
         <v-row v-for="song in songs"
-          :key="song.id">
-            <v-col class="col-md-6" align="left">
+          :key="song.id"
+          class="song">
+            <v-col class="col-md-8" align="left">
               <div class="song-title">{{song.title}}</div>
-              <div class="song-title">{{song.artist}}</div>
-              <div class="song-title">{{song.genre}}</div>
+              <div class="song-artist">{{song.artist}}</div>
+              <div class="song-genre">{{song.genre}}</div>
+              <v-btn
+                dark
+                class="indigo"
+                :to="{
+                  name: 'song',
+                  params: {
+                    SongId: song.id
+                  }
+                }">
+                View
+              </v-btn>
             </v-col>
-            <v-col class="col-md-6" align="center">
+            <v-col class="col-md-4" align="center">
               <div class="song-album-image">
                 <img :src="song.albumImageUrl" alt="">
               </div>
@@ -43,12 +55,32 @@ export default {
       ]
     }
   },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
+  },
   async created () {
     this.songs = (await SongsService.index()).data
+    console.log(this.songs)
   }
 }
 </script>
 
 <style scoped>
-
+  .song {
+    border-bottom: 2px solid #e1e1e1;
+  }
+  .song-album-image img {
+    max-width: 100%;
+  }
+  .song-title {
+    font-size: 36px;
+  }
+  .song-artist {
+    font-size: 24px;
+  }
+  .song-genre {
+    font-size: 18px;
+  }
 </style>
