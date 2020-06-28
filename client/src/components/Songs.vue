@@ -15,17 +15,17 @@
         <v-row v-for="song in songs"
           :key="song.id"
           class="song">
-            <v-col class="col-md-8" align="left">
+            <v-col class="song-text col-md-8" align="left">
               <div class="song-title">{{song.title}}</div>
               <div class="song-artist">{{song.artist}}</div>
               <div class="song-genre">{{song.genre}}</div>
               <v-btn
                 dark
-                class="indigo"
+                class="indigo btn-view-song"
                 :to="{
                   name: 'song',
                   params: {
-                    SongId: song.id
+                    songId: song.id
                   }
                 }">
                 View
@@ -82,5 +82,11 @@ export default {
   }
   .song-genre {
     font-size: 18px;
+  }
+  .btn-view-song {
+    margin-top: 20px;
+  }
+  .song-text {
+    padding: 20px;
   }
 </style>
